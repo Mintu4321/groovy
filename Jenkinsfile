@@ -1,52 +1,36 @@
-@Library(['my-shared-library'])
-import groovy.json.JsonSlurper
+@Library(['my-shared-library']) _
+import com.example.StatusReporter
 
 pipeline {
     agent any
 
-    stages{
-        stage('Initialization'){
-        steps {
-            script {
-            stageName = ''
-            sh 'echo "Hello world"'
+    stages {
+        stage('Initialization') {
+            steps {
+                script {
+                    stageName = ''
+                    sh 'echo "Hello world"'
+                }
             }
         }
-
-      }
-      stage('build'){
-        steps {
-            script {
-            stageName = 'build'
-            deployerUtils()
+        stage('build') {
+            steps {
+                script {
+                    stageName = 'build'
+                    deployerUtils()
+                }
+            }
+            post {
+                success {
+                    StatusReporter.statusReporter('SUCCESS', stageName)
+                }
+                failure {
+                    StatusReporter.statusReporter('FAILURE', stageName)
+                }
+                unstable {
+                    StatusReporter.statusReporter('UNSTABLE', stageName)
+                }
             }
         }
-        post {
-            success {
-                statusReporter('SUCCESS', stageName)
-
-            }
-            failure {
-               statusReporter('FAILURE', stageName)
-
-            }
-            unstable {
-              statusReporter('UNSTABLE', stageName)
-
-
-            }
-
-        }
-      }
-
-
     }
 }
-
-
-
-
-
-
-
-
