@@ -1,5 +1,5 @@
 @Library(['my-shared-library']) _
-import com.example.StatusReporter
+// import com.example.StatusReporter
 
 pipeline {
     agent any
@@ -20,23 +20,24 @@ pipeline {
                 }
                 deployerUtils()
             }
-            post {
-                success {
-                    script {
-                        StatusReporter.statusReporter('SUCCESS', stageName)
-                    }
-                }
-                failure {
-                    script {
-                        StatusReporter.statusReporter('FAILURE', stageName)
-                    }
-                }
-                unstable {
-                    script {
-                        StatusReporter.statusReporter('UNSTABLE', stageName)
-                    }
-                }
+            // post {
+            //     success {
+            //         script {
+            //             StatusReporter.statusReporter('SUCCESS', stageName)
+            //         }
+            //     }
+            //     failure {
+            //         script {
+            //             StatusReporter.statusReporter('FAILURE', stageName)
+            //         }
+            //     }
+            //     unstable {
+            //         script {
+            //             StatusReporter.statusReporter('UNSTABLE', stageName)
+            //         }
+            //     }
             }
         }
     }
+  }
 }
