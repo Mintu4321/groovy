@@ -20,24 +20,17 @@ pipeline {
                 }
                 deployerUtils()
             }
-            // post {
-            //     success {
-            //         script {
-            //             StatusReporter.statusReporter('SUCCESS', stageName)
-            //         }
-            //     }
-            //     failure {
-            //         script {
-            //             StatusReporter.statusReporter('FAILURE', stageName)
-            //         }
-            //     }
-            //     unstable {
-            //         script {
-            //             StatusReporter.statusReporter('UNSTABLE', stageName)
-            //         }
-            //     }
-            }
-        }
+            
+         }
+       
     }
-  }
+}
+
+
+
+
+
+
+
+
 
