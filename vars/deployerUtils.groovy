@@ -3,6 +3,9 @@ import groovy.json.JsonSlurper
 def call(){
 def constants = new utils.aksconstants()
 
-echo 'constants: ' + ",".join(constants)
+  for (item in constants){
+
+    println item
+  }
 
 }
