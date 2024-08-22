@@ -1,5 +1,5 @@
 @Library(['my-shared-library']) _
-
+import com.example.StatusReporter
 
 pipeline {
     agent any
