@@ -15,9 +15,9 @@ pipeline {
         stage('build') {
             steps {
                 script {
-                    stageName = 'build'
-                    deployerUtils()
+                    stageName = 'build'       
                 }
+                deployerUtils()
             }
             post {
                 success {
