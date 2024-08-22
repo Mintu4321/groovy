@@ -1,3 +1,4 @@
+@Library(['my-shared-library'])
 import groovy.json.JsonSlurper
 
 pipeline {
