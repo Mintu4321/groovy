@@ -18,7 +18,7 @@ pipeline {
         steps {
             script {
             stageName = 'build'
-            sh 'building the app'
+            deployerUtils()
             }
         }
         post {
