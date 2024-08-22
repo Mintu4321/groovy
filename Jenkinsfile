@@ -1,5 +1,6 @@
 @Library(['my-shared-library']) _
 
+
 pipeline {
     agent any
 
@@ -21,13 +22,19 @@ pipeline {
             }
             post {
                 success {
-                    StatusReporter.statusReporter('SUCCESS', stageName)
+                    script {
+                        StatusReporter.statusReporter('SUCCESS', stageName)
+                    }
                 }
                 failure {
-                    StatusReporter.statusReporter('FAILURE', stageName)
+                    script {
+                        StatusReporter.statusReporter('FAILURE', stageName)
+                    }
                 }
                 unstable {
-                    StatusReporter.statusReporter('UNSTABLE', stageName)
+                    script {
+                        StatusReporter.statusReporter('UNSTABLE', stageName)
+                    }
                 }
             }
         }
