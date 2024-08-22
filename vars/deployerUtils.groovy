@@ -2,10 +2,9 @@ import groovy.json.JsonSlurper
 
 def call(){
 def constants = new utils.aksconstants()
+def items = constants.prodEnv.join(',')
 
-  for (item in constants.prodEnv){
-
-    println ','.joint(item)
-  }
+println "items: ${items}"
+  
 
 }
