@@ -1,6 +1,3 @@
-@Library(['my-shared-library']) _
-// import com.example.StatusReporter
-
 pipeline {
     agent any
 
@@ -8,22 +5,21 @@ pipeline {
         stage('Initialization') {
             steps {
                 script {
-                    stageName = ''
-                    sh 'echo "Hello world"'
+                    echo 'Hello world'
                 }
             }
         }
-        stage('build') {
+        stage('Build') {
             steps {
                 script {
-                    stageName = 'build'       
+                    echo 'Building...'
+                    
                 }
-                deployerUtils()
+              deployerUtils()
             }
-            
-         }
-       
+        }
     }
+
     post {
         always {
             // Cleanup workspace
@@ -31,12 +27,3 @@ pipeline {
         }
     }
 }
-
-
-
-
-
-
-
-
-
